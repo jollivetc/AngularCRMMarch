@@ -8,10 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angularCRM';
 
-  label = 'un label'
-
-  childClicked($event:string):void{
-    console.log($event)
-  }
-
 }

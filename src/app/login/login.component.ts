@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent {
     no$InPassword: 'pas de $ dans le mot de passe'
   };
 
-  constructor(private authent: AuthenticationService){
+  constructor(private authent: AuthenticationService, private router: Router){
     this.loginForm = new FormGroup({
       login: new FormControl('', [Validators.required, Validators.minLength(5)]),
       password: new FormControl('', [Validators.required, no$InPassword])
@@ -27,7 +28,9 @@ export class LoginComponent {
   }
   logIn():void{
     const user = this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password);
-    console.log(user)
+    if(user){
+      this.router.navigateByUrl('/home');
+    }
   }
 
 }
