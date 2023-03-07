@@ -3,4 +3,9 @@
 <div>
   <button (click)="increase($event)">Click Me</button>
 </div>
-<span>{{compteur}}</span>
+<span [ngClass]="compteur%2===0? 'even' : ''">{{compteur}}</span>
+<ul>
+  <li *ngFor="let language of languages" (click)="method(language)">
+    {{language}}
+  </li>
+</ul>
