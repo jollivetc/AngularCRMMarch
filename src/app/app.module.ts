@@ -7,11 +7,13 @@ import { CrmMaterialModule } from './crm-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { DummyComponent } from './component/dummy/dummy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,
