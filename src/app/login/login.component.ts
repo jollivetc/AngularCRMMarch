@@ -9,6 +9,14 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 export class LoginComponent {
 
   loginForm: FormGroup;
+  errorMessageLogin = {
+    required: 'le champs est obligatoire',
+    minlength: 'au moins 5 caractères'
+  };
+  errorMessagePassword = {
+    required: 'le champs est obligatoire',
+    no$InPassword: 'pas de $ dans le mot de passe'
+  };
 
   constructor(){
     this.loginForm = new FormGroup({
@@ -19,9 +27,7 @@ export class LoginComponent {
   logIn():void{
     console.log(this.loginForm)
   }
-  isLoginInvalid():boolean{
-    return !!((this.loginForm.get('login')?.touched || this.loginForm.get('login')?.dirty)) && !!this.loginForm.get('login')?.errors
-  }
+
 }
 
 function no$InPassword(c:AbstractControl):ValidationErrors | null{

@@ -4,16 +4,17 @@
       <mat-label for="login">Login</mat-label>
       <input matInput type="text" id="login" formControlName="login">
     </mat-form-field>
-      <span *ngIf="isLoginInvalid()">
-        <span *ngIf="loginForm.get('login')?.errors?.['required']">le champs est obligatoire</span>
-        <span *ngIf="loginForm.get('login')?.errors?.['minlength']">au moins 5 caractères</span>
-      </span>
+      <crm-help [field]="loginForm.get('login')!"
+                  [errorMessages]="errorMessageLogin"></crm-help>
   </p>
   <p>
     <mat-form-field>
       <mat-label for="password">Password</mat-label>
       <input matInput type="password" id="password" formControlName="password">
     </mat-form-field>
+    <crm-help [field]="loginForm.get('password')!"
+              [errorMessages]="errorMessagePassword"></crm-help>
+
   </p>
   <button mat-button color=primary type="submit"
           [disabled]="loginForm.invalid">Login</button>
