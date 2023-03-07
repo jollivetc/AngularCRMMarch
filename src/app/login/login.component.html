@@ -1,18 +1,21 @@
 <form [formGroup]="loginForm" (ngSubmit)="logIn()">
   <p>
-    <label for="login">Login</label>
-    <input type="text" id="login" formControlName="login">
-    <span *ngIf="isLoginInvalid()">
-      <span *ngIf="loginForm.get('login')?.errors?.['required']">le champs est obligatoire</span>
-      <span *ngIf="loginForm.get('login')?.errors?.['minlength']">au moins 5 caractères</span>
-    </span>
+    <mat-form-field>
+      <mat-label for="login">Login</mat-label>
+      <input matInput type="text" id="login" formControlName="login">
+    </mat-form-field>
+      <span *ngIf="isLoginInvalid()">
+        <span *ngIf="loginForm.get('login')?.errors?.['required']">le champs est obligatoire</span>
+        <span *ngIf="loginForm.get('login')?.errors?.['minlength']">au moins 5 caractères</span>
+      </span>
   </p>
-
   <p>
-    <label for="password">Password</label>
-    <input type="password" id="password" formControlName="password">
+    <mat-form-field>
+      <mat-label for="password">Password</mat-label>
+      <input matInput type="password" id="password" formControlName="password">
+    </mat-form-field>
   </p>
-
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button mat-button color=primary type="submit"
+          [disabled]="loginForm.invalid">Login</button>
 
 </form>
