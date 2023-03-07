@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularCRM';
+  compteur: number = 0;
+
+  increase( $event : MouseEvent):void{
+    this.compteur++;
+    console.log($event);
+  }
 }
