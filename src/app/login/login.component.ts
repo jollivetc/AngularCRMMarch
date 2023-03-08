@@ -25,6 +25,7 @@ export class LoginComponent {
       login: new FormControl('', [Validators.required, Validators.minLength(5)]),
       password: new FormControl('', [Validators.required, no$InPassword])
     })
+    this.authent.disconnect();
   }
   logIn():void{
     const user = this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password);
