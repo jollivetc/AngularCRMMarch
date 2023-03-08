@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, TitleStrategy } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
+import { User } from './model/user';
 
 @Component({
   selector: 'crm-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
 
   loginForm: FormGroup;
   errorMessageLogin = {
@@ -19,6 +21,7 @@ export class LoginComponent {
     required: 'le champs est obligatoire',
     no$InPassword: 'pas de $ dans le mot de passe'
   };
+  private subscriptions:Subscription[]= [];
 
   constructor(private authent: AuthenticationService, private router: Router){
     this.loginForm = new FormGroup({
@@ -27,11 +30,16 @@ export class LoginComponent {
     })
     this.authent.disconnect();
   }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s=>s.unsubscribe());
+  }
   logIn():void{
-    const user = this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password);
-    if(user){
-      this.router.navigateByUrl('/home');
-    }
+    const subscription: Subscription = this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password)
+        .subscribe({
+          next:(value:User)=>{ this.router.navigateByUrl('/home'); },
+          error:(error:Error)=>{console.log(error)}
+        });
+    this.subscriptions.push(subscription);
   }
 
 }
