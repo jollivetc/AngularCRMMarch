@@ -23,8 +23,14 @@ export class AuthenticationService {
     return !!this.currentUser;
   }
 
+  get JWTToken():string | undefined {
+    return this.token;
+  }
+
   disconnect():void{
-    sessionStorage.clear()
+    sessionStorage.clear();
+    this.currentUser = undefined;
+    this.token= undefined;
   }
 
   authentUser(login:string, password:string):Observable<User>{
