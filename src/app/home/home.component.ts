@@ -9,6 +9,7 @@ import { DemoObservableService } from '../common/demo-observable.service';
 })
 export class HomeComponent implements OnDestroy{
 
+  phoneNumber:string='1234567890';
   myObservable?:Observable<number>;
   private subscriptions: Subscription[] = [];
 
