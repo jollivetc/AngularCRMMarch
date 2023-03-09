@@ -14,6 +14,7 @@
     <th>Prénom</th>
     <th>email</th>
     <th>Téléphone</th>
+    <th>Actions</th>
   </thead>
   <tr *ngFor="let consumer of consumers|async">
     <td>{{consumer.id}}</td>
@@ -22,5 +23,11 @@
     <td>{{consumer.firstname}}</td>
     <td>{{consumer.email}}</td>
     <td>{{consumer.phone | phone}}</td>
+    <td>
+      <a mat-icon-button matTooltip="Editer"
+          [routerLink]="['/consumer-form',consumer.id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+    </td>
   </tr>
 </table>

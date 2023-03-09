@@ -20,6 +20,13 @@ export class ConsumerService {
   }
 
   save(consumer:Consumer):Observable<Consumer>{
+    if(consumer.id){
+      return this.http.put<Consumer>(`/api/consumers/${consumer.id}`, consumer);
+    }
     return this.http.post<Consumer>('/api/consumers', consumer);
+  }
+
+  findConsumerById(id:string):Observable<Consumer>{
+    return this.http.get<Consumer>(`/api/consumers/${id}`);
   }
 }
