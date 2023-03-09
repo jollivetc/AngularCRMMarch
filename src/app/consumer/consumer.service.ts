@@ -18,4 +18,8 @@ export class ConsumerService {
     //return this.http.get<Consumer[]>(`/api/consumers?q=${search}`);
     return this.http.get<Consumer[]>(`/api/consumers`, {params:{q:search}})
   }
+
+  save(consumer:Consumer):Observable<Consumer>{
+    return this.http.post<Consumer>('/api/consumers', consumer);
+  }
 }

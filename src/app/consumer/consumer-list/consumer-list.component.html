@@ -1,5 +1,9 @@
 <div>
   <input type="text" [(ngModel)]="search" (keyup)="doSearch()">
+  <a mat-icon-button matTooltip="Ajouter"
+      routerLink="/consumer-form">
+    <mat-icon>person_add</mat-icon>
+  </a>
 </div>
 
 <table>
