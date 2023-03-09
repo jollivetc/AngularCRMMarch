@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrmMaterialModule } from './crm-material.module';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
@@ -13,6 +13,7 @@ import { HelpComponent } from './component/help/help.component';
 import { HomeComponent } from './home/home.component';
 import { JWTInterceptorService } from './common/jwtinterceptor.service';
 import { PhonePipe } from './common/phone.pipe';
+import { ConsumerListComponent } from './consumer/consumer-list/consumer-list.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,13 @@ import { PhonePipe } from './common/phone.pipe';
     DummyComponent,
     HelpComponent,
     HomeComponent,
-    PhonePipe
+    PhonePipe,
+    ConsumerListComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     CrmMaterialModule,

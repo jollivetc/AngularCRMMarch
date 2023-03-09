@@ -1,0 +1,22 @@
+<div>
+  <input type="text" [(ngModel)]="search" (keyup)="doSearch()">
+</div>
+
+<table>
+  <thead>
+    <th>id</th>
+    <th>Civilité</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>email</th>
+    <th>Téléphone</th>
+  </thead>
+  <tr *ngFor="let consumer of consumers|async">
+    <td>{{consumer.id}}</td>
+    <td>{{consumer.civility}}</td>
+    <td>{{consumer.lastname}}</td>
+    <td>{{consumer.firstname}}</td>
+    <td>{{consumer.email}}</td>
+    <td>{{consumer.phone | phone}}</td>
+  </tr>
+</table>
