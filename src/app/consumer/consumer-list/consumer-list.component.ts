@@ -19,8 +19,18 @@ export class ConsumerListComponent implements OnInit{
     this.consumers=this.consumerService.getAllConsumers()
   }
 
-  doSearch(){
+  doSearch():void{
     this.consumers = this.consumerService.findConsumers(this.search!);
+  }
+
+  delete(consumerId:number): void{
+    this.consumerService.deleteConsumer(consumerId)
+          .subscribe({
+            next:(value:Object)=>{
+              this.doSearch();
+            },
+            error:(error:Error)=>{console.error(error)}
+          })
   }
 
 }

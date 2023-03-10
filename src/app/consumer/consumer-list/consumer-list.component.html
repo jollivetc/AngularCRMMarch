@@ -28,6 +28,10 @@
           [routerLink]="['/consumer-form',consumer.id]">
         <mat-icon>edit</mat-icon>
       </a>
+      <a mat-icon-button matTooltip="Supprimer"
+          (click)="delete(consumer.id!)">
+        <mat-icon>delete</mat-icon>
+      </a>
     </td>
   </tr>
 </table>
